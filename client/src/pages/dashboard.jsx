@@ -1,17 +1,20 @@
 import React, { useState } from 'react';
+import { useNavigate } from 'react-router-dom';
 import Home from './Home';
 import DeviceList from './devices';
 import DeviceManagement from './DeviceManagement';
 import MonitoringDashboard from './monitor';
-// import DeviceManagement from './DeviceManagement';
-// import DeviceList from './DeviceList';
-// import MonitoringDashboard from './MonitoringDashboard';
 
 const Dashboard = () => {
-  // Set the default view to "Home"
   const [activeSection, setActiveSection] = useState('home');
+  const navigate = useNavigate();
 
-  // Helper function to render the selected section
+  const handleLogout = () => {
+    // Clear the token from localStorage and navigate to the login page
+    localStorage.removeItem('token');
+    navigate('/login');
+  };
+
   const renderSection = () => {
     switch (activeSection) {
       case 'home':
@@ -67,6 +70,12 @@ const Dashboard = () => {
               Monitoring
             </li>
           </ul>
+          <button
+            onClick={handleLogout}
+            className="text-white font-bold bg-red-500 hover:bg-red-600 px-4 py-2 rounded transition duration-200"
+          >
+            Logout
+          </button>
         </div>
       </nav>
 

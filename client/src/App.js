@@ -21,12 +21,12 @@ function App() {
       <Route path="/login" element={<Login />} />
       <Route path="/signup" element={<Signup />} />
       
-        <Route path="/" element={
+        <Route path="/home" element={
           <ProtectedRoute>
           <Home />
           </ProtectedRoute>
           } />
-        <Route path="/dashboard" element={
+        <Route path="/" element={
           <ProtectedRoute>
           <Dashboard />
           </ProtectedRoute>
